@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpokedex/app/modules/arroz/arroz_page.dart';
+import 'package:flutterpokedex/app/modules/whoisthat/whoisthat_page.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.yellow,
             onPressed: () {
               Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => ArrozPage()));
+                  CupertinoPageRoute(builder: (context) => WhoisthatPage()));
             },
             child: Text("Feijao"),
           ),
