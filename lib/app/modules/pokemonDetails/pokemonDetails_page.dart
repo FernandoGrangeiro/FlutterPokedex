@@ -54,7 +54,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
               backgroundColor: pokemon.typeInfo.color,
             ),
             body: Column(
-              children: <Widget>[   
+              children: <Widget>[
                 Stack(
                   children: <Widget>[
                     Image(
