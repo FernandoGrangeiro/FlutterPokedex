@@ -49,7 +49,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         if (snapshot.hasData) {
           Pokemon pokemon = snapshot.data;
           return Scaffold(
-            appBar: AppBar(
+            appBar: AppBar(   
               title: Text(pokemon.name),   
               backgroundColor: pokemon.typeInfo.color,
             ),
