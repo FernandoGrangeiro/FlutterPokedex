@@ -67,7 +67,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                         Image.network(
                           this.shouldShowDefaultImage ? pokemon.image : pokemon.shinyImage,
                           height: 200,
-                          fit: BoxFit.contain,
+                          fit: BoxFit.contain, 
                         ),
                       ],
                     ),
