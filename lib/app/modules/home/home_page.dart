@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpokedex/app/modules/arroz/arroz_page.dart';
-import 'package:flutterpokedex/app/modules/pokemonList/pokemonList_page.dart';
 import 'package:flutterpokedex/app/modules/whoisthat/whoisthat_page.dart';
-import 'package:flutterpokedex/app/modules/pokemonDetails/pokemonDetails_page.dart';
-import 'package:flutterpokedex/app/modules/whoisthatoutsmarter/whoisthatoutsmarter_page.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -24,40 +21,50 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: <Widget>[
-          FlatButton(
-            color: Colors.blue,
-            onPressed: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => ArrozPage()));
-            },
-            child: Text("Cachorro"),
-          ),
-          FlatButton(
-            color: Colors.brown,
-            onPressed: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => PokemonDetailsPage()));
-            },
-            child: Text("Gato"),
-          ),
-          FlatButton(
-            color: Colors.black,
-            onPressed: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => PokemonListPage()));
-            },
-            child: Text(
-              "Corote",
-              style: TextStyle(color: Colors.white),
+          Image(image: AssetImage('lib/assets/logo.png')),
+          Row(
+          children: <Widget>[
+            FlatButton(
+              color: Colors.blue,
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => ArrozPage()));
+              },
+              child: Text("Cachorro"),
             ),
+            FlatButton(
+              color: Colors.brown,
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => ArrozPage()));
+              },
+              child: Text("Gato"),
+            ),
+            FlatButton(
+              color: Colors.black,
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => ArrozPage()));
+              },
+              child: Text("Corote", style: TextStyle(color: Colors.white)),
+            ),
+            FlatButton(
+              color: Colors.yellow,
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => WhoisthatPage()));
+              },
+              child: Text("Feijao"),
+            ),
+            ],
           ),
-          FlatButton(
-            color: Colors.yellow,
+          IconButton(
+            icon: Image(image: AssetImage('lib/assets/red-button.png')),
+            iconSize: 200,
             onPressed: () {
               Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => WhoisthatoutsmarterPage()));
+                  CupertinoPageRoute(builder: (context) => WhoisthatPage()));
             },
-            child: Text("Feijao"),
           ),
         ],
       ),
