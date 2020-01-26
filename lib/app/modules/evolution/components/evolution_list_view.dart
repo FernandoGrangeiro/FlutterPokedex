@@ -16,7 +16,7 @@ class EvolutionListWidget extends StatelessWidget {
           return EvolutionCell(
               listEvolution: listItems.chain.listSpecies,
               index: index,
-              id: listItems.id);
+              id: listItems.chain.listSpecies[0].id);
         });
   }
 }

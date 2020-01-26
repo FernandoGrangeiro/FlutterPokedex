@@ -41,7 +41,7 @@ class EvolutionCell extends StatelessWidget {
               placeholder: 'lib/assets/whoisthat.png',
               image:
                   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
-                      (int.parse(id) + index + 1).toString() +
+                      (int.parse(id) + index).toString() +
                       '.png',
               fit: BoxFit.cover),
           pokemonMainInfo()

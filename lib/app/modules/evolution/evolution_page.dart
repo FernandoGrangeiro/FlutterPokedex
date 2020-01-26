@@ -5,9 +5,12 @@ import 'components/evolution_list_loader.dart';
 import 'components/evolution_list_view.dart';
 
 class EvolutionPage extends StatefulWidget {
-  final String title;
+  final String title, evolutionChain;
+  final int id;
 
-  const EvolutionPage({Key key, this.title = "Evolution"}) : super(key: key);
+  const EvolutionPage(
+      {Key key, this.title = "Evolution", this.id, this.evolutionChain})
+      : super(key: key);
 
   @override
   _EvolutionPageState createState() => _EvolutionPageState();
@@ -18,7 +21,7 @@ class _EvolutionPageState extends State<EvolutionPage> {
 
   @override
   void initState() {
-    _bloc.getEvolutionsByPokemon();
+    _bloc.getEvolutionsByPokemon(widget.evolutionChain.toString());
     super.initState();
   }
 
@@ -32,10 +35,9 @@ class _EvolutionPageState extends State<EvolutionPage> {
                 appBar: AppBar(
                   title: Text(widget.title),
                 ),
-                body: snapshot.hasError
-                    ? EvolutionListWidget(listItems: snapshot.data)
-                    : Scaffold.of(context)
-                        .showSnackBar(SnackBarPage().snackBar));
+                body: EvolutionListWidget(
+                  listItems: snapshot.data
+                ));
           }
           return Scaffold(
               appBar: AppBar(

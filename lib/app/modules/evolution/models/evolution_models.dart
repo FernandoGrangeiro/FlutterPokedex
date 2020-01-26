@@ -17,6 +17,7 @@ class Chain {
 
   factory Chain.fromJson(Map<String, dynamic> json) {
     List<Species> list = [];
+    list.add(Species.fromJson(json['species']));
     list.add(Species.fromJson(json['evolves_to'][0]['species']));
     list.add(
         Species.fromJson(json['evolves_to'][0]['evolves_to'][0]['species']));
@@ -27,11 +28,14 @@ class Chain {
 
 class Species {
   final String name;
-  final String url;
+  final String id;
 
-  Species({this.name, this.url});
+  Species({this.name, this.id});
 
   factory Species.fromJson(Map<String, dynamic> json) {
-    return Species(name: json['name'], url: json['url']);
+    var id = json['url'];
+    var index = id.lastIndexOf('/');
+
+    return Species(name: json['name'], id: id[index - 1]);
   }
 }

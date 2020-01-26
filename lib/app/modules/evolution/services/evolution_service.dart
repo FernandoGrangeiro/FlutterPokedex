@@ -6,11 +6,19 @@ import 'package:flutterpokedex/app/modules/evolution/models/evolution_models.dar
 class EvolutionService {
   final dio = Dio();
 
-  Future<EvolutionResponse> getEvolutionsByPokemon(String id) async {
-    Response evolutionResponse =
-        await dio.get("https://pokeapi.co/api/v2/evolution-chain/1");
+  Future<EvolutionResponse> getEvolutionsByPokemon(
+      String evolutionChain) async {
+    var url = await getPokemonSpecies(evolutionChain);
+    Response evolutionResponse = await dio.get(url);
 
     return _parseEvolutions(evolutionResponse.toString());
+  }
+
+  Future<String> getPokemonSpecies(String pokemonSpecies) async {
+    Response speciesResponse = await dio.get(pokemonSpecies);
+    final parsed = json.decode(speciesResponse.toString());
+
+    return parsed['evolution_chain']['url'];
   }
 
   EvolutionResponse _parseEvolutions(String responseBody) {

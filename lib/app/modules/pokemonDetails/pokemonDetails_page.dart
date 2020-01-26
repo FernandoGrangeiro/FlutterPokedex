@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemonStats.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemon.dart';
@@ -107,8 +108,11 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              CupertinoPageRoute(
-                                  builder: (context) => ArrozPage()));
+                              MaterialPageRoute(
+                                  builder: (context) => EvolutionPage(
+                                    id: widget.id,
+                                    evolutionChain: pokemon.evolutionChain,
+                                  )));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(20),

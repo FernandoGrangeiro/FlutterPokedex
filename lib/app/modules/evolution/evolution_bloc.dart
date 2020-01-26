@@ -12,8 +12,10 @@ class EvolutionBloc extends BlocBase {
 
   Sink get dataEnter => _controller.sink;
 
-  getEvolutionsByPokemon() async {
-    EvolutionResponse request = await _evolutionService.getEvolutionsByPokemon("1");
+  getEvolutionsByPokemon(String evolutionChain) async {
+
+    EvolutionResponse request =
+        await _evolutionService.getEvolutionsByPokemon(evolutionChain);
 
     dataEnter.add(request);
   }
