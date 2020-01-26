@@ -52,7 +52,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
             appBar: AppBar(
               title: Text(pokemon.name),
               backgroundColor: pokemon.typeInfo.color,
-            ),  
+            ),
             body: Column(
               children: <Widget>[
                 Stack(
