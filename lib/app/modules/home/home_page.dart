@@ -20,10 +20,12 @@ class _HomePageState extends State<HomePage> {
         title: Text(widget.title),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           Image(image: AssetImage('lib/assets/logo.png')),
           Row(
-          children: <Widget>[
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
             FlatButton(
               color: Colors.blue,
               onPressed: () {
@@ -39,22 +41,6 @@ class _HomePageState extends State<HomePage> {
                     CupertinoPageRoute(builder: (context) => ArrozPage()));
               },
               child: Text("Gato"),
-            ),
-            FlatButton(
-              color: Colors.black,
-              onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => ArrozPage()));
-              },
-              child: Text("Corote", style: TextStyle(color: Colors.white)),
-            ),
-            FlatButton(
-              color: Colors.yellow,
-              onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => WhoisthatPage()));
-              },
-              child: Text("Feijao"),
             ),
             ],
           ),
