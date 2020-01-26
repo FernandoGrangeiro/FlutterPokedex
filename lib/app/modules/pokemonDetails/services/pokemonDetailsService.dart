@@ -55,7 +55,7 @@ class PokemonDetailsService {
 
     Stats stats = Stats(speed, attack, defense, specialAttack, specialDefense, hp);
     Types type = getTypeFromString(decodedJson['types'][decodedJson['types'].length - 1]['type']['name']);
-    Pokemon pokemon = Pokemon.fromJson(jsonDecode(jsonResponseString), new TypeInfo(type), stats);
+    Pokemon pokemon = Pokemon.fromJson(jsonDecode(jsonResponseString), new TypeInfo(type), stats, shouldShowFetchOutsmarter);
 
     return pokemon;
   }

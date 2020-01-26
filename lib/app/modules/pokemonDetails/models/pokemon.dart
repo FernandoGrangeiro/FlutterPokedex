@@ -28,14 +28,15 @@ class Pokemon {
 
   Pokemon.fromJson(Map<String, dynamic> json,
       TypeInfo type,
-      Stats stats,)
+      Stats stats,
+      bool isOutsmarter)
       : id = json['id'],
         typeInfo = type,
         stats = stats,
         image =
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
+            !isOutsmarter ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
                 json['id'].toString() +
-                '.png',
+                '.png' : 'https://appsimples-bucket.s3.amazonaws.com/outsmart-images/' + json['id'].toString() + '.png',
         order = json['order'],
         evolutionChain = json['species']['url'],
         name = json['name'],

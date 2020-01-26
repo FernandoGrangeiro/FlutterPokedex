@@ -48,8 +48,8 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         if (snapshot.hasData) {
           Pokemon pokemon = snapshot.data;
           return Scaffold(
-            appBar: AppBar(   
-              title: Text(pokemon.name),     
+            appBar: AppBar(
+              title: Text(pokemon.name),
               backgroundColor: pokemon.typeInfo.color,
             ),
             body: Column(
@@ -66,7 +66,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                         Image.network(
                           this.shouldShowDefaultImage ? pokemon.image : pokemon.shinyImage,
                           height: 200,
-                          fit: BoxFit.contain, 
+                          fit: BoxFit.contain,
                         ),
                       ],
                     ),
@@ -99,7 +99,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                     decoration:
                         new BoxDecoration(color: pokemon.typeInfo.color),
                     child: new Center(
-                      child: FlatButton(
+                      child: !widget.shouldShowOutsmarter ? FlatButton(
                         child: Text('GO TO EVOLUTIONS'),
                         color: Colors.purple,
                         textColor: Colors.white,
@@ -116,7 +116,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                           borderRadius: new BorderRadius.circular(20),
                           side: BorderSide(color: Colors.white),
                         ),
-                      ),
+                      ) : null,
                     ),
                   ),
                 )
