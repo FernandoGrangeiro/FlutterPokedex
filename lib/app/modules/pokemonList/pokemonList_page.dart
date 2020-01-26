@@ -55,7 +55,9 @@ class _PokemonListPageState extends State<PokemonListPage> {
       itemBuilder: (context,index) {
         return PokemonCardWidget(
           widget.isPokemon?
-          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' :
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
+              +
+              data.list[index].id.toString() + '.png':
             'https://appsimples-bucket.s3.amazonaws.com/outsmart-images/'
            +
                 data.list[index].id.toString() + '.png',
