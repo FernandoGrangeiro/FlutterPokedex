@@ -1,11 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemonStats.dart';
+import 'package:flutterpokedex/app/modules/evolution/evolution_page.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemon.dart';
-import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemonTypes.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/pokemonDetails_bloc.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/widgets/statsBox/statsBox_widget.dart';
-import 'package:flutterpokedex/app/modules/arroz/arroz_page.dart';
-import 'package:flutter/cupertino.dart';
 
 class PokemonDetailsPage extends StatefulWidget {
   final String title;
@@ -49,8 +47,8 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         if (snapshot.hasData) {
           Pokemon pokemon = snapshot.data;
           return Scaffold(
-            appBar: AppBar(
-              title: Text(pokemon.name),
+            appBar: AppBar(   
+              title: Text(pokemon.name),     
               backgroundColor: pokemon.typeInfo.color,
             ),
             body: Column(
@@ -67,7 +65,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                         Image.network(
                           this.shouldShowDefaultImage ? pokemon.image : pokemon.shinyImage,
                           height: 200,
-                          fit: BoxFit.contain,
+                          fit: BoxFit.contain, 
                         ),
                       ],
                     ),
@@ -107,8 +105,11 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              CupertinoPageRoute(
-                                  builder: (context) => ArrozPage()));
+                              MaterialPageRoute(
+                                  builder: (context) => EvolutionPage(
+                                    id: widget.id,
+                                    evolutionChain: pokemon.evolutionChain,
+                                  )));
                         },
                         shape: RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(20),
