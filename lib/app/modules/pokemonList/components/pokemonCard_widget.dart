@@ -1,7 +1,10 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
+
+import 'package:flutterpokedex/app/modules/pokemonDetails/pokemonDetails_page.dart';
 
 class PokemonCardWidget extends StatelessWidget {
   var _img;
@@ -20,14 +23,17 @@ class PokemonCardWidget extends StatelessWidget {
       child: new Material(
         borderRadius: new BorderRadius.circular(6.0),
         elevation: 2.0,
-        child: clickableCard(),
+        child: clickableCard(context),
       ),
     );
   }
 
-  Widget clickableCard() {
+  Widget clickableCard(BuildContext context) {
     return new InkWell(
-      onTap: ()=> developer.log(_id.toString()),
+      onTap: () {
+        Navigator.push(context,
+            CupertinoPageRoute(builder: (context) => PokemonDetailsPage(id: _id,)));
+      },
       child: card(),
     );
   }

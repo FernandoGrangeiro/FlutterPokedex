@@ -22,7 +22,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
   @override
   void initState() {
     super.initState();
-    _bloc.fetchPokemonDetails();
+    _bloc.fetchPokemonDetails(widget.id.toString());
   }
 
   @override
@@ -33,7 +33,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         if (snapshot.hasError) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Pokemon Details'),
+              title: Text('Errrrrrou'),
               backgroundColor: Colors.red,
             ),
           );
@@ -76,7 +76,6 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
           return Scaffold(
             appBar: AppBar(
               title: Text('Pokemon Details'),
-              backgroundColor: Colors.red,
             ),
             body: Column(
               children: <Widget>[
