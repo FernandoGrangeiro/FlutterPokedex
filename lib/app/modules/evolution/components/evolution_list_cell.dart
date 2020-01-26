@@ -8,9 +8,8 @@ class EvolutionCell extends StatelessWidget {
 
   final List<Species> listEvolution;
   final int index;
-  BuildContext context;
-
   final String id;
+  BuildContext context;
 
   @override
   Widget build(BuildContext context) {
