@@ -61,7 +61,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
             'https://appsimples-bucket.s3.amazonaws.com/outsmart-images/'
            +
                 data.list[index].id.toString() + '.png',
-        data.list[index].name, data.list[index].id);
+        data.list[index].name, data.list[index].id, widget.isPokemon);
       },
       itemCount: data.list.length,
       padding: new EdgeInsets.only(top: 5.0),

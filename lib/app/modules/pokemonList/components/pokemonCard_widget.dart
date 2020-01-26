@@ -10,8 +10,9 @@ class PokemonCardWidget extends StatelessWidget {
   var _img;
   var _name;
   var _id;
+  var _bool;
 
-  PokemonCardWidget(this._img,this._name, this._id);
+  PokemonCardWidget(this._img,this._name, this._id, this._bool);
 
   BuildContext _context;
 
@@ -32,7 +33,7 @@ class PokemonCardWidget extends StatelessWidget {
     return new InkWell(
       onTap: () {
         Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => PokemonDetailsPage(id: _id, shouldShowOutsmarter: true,)));
+            CupertinoPageRoute(builder: (context) => PokemonDetailsPage(id: _id, shouldShowOutsmarter: !this._bool,)));
       },
       child: card(),
     );
