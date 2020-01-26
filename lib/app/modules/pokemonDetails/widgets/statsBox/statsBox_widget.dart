@@ -6,15 +6,17 @@ class StatsBoxWidget extends StatelessWidget {
   const StatsBoxWidget({
     Key key,
     this.stats,
+    this.color,
   }) : super(key: key);
   final Stats stats;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Container(
-          color: Colors.amberAccent,
+          color: Colors.orange,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

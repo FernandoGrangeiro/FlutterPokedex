@@ -55,9 +55,6 @@ class PokemonDetailsService {
     Stats stats = Stats(speed, attack, defense, specialAttack, specialDefense, hp);
     Types type = getTypeFromString(decodedJson['types'][decodedJson['types'].length - 1]['type']['name']);
     Pokemon pokemon = Pokemon.fromJson(jsonDecode(jsonResponseString), new TypeInfo(type), stats);
-    print('pokemon: ' + pokemon.toString());
-
-//    Pokemon pokemon = Pokemon(4, Types.fire, 'Charmander', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png', 5, stats);
 
     return pokemon;
   }

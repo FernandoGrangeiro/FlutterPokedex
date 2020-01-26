@@ -19,10 +19,18 @@ class PokemonDetailsPage extends StatefulWidget {
 
 class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
   var _bloc = PokemonDetailsBloc();
+  var shouldShowDefaultImage = true;
+
   @override
   void initState() {
     super.initState();
     _bloc.fetchPokemonDetails(widget.id.toString());
+  }
+
+  void toggleImageToShow() {
+    setState(() {
+      this.shouldShowDefaultImage = !shouldShowDefaultImage;
+    });
   }
 
   @override
@@ -47,26 +55,67 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
             ),
             body: Column(
               children: <Widget>[
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Stack(
                   children: <Widget>[
-                    Image.network(pokemon.image, height: 200, fit: BoxFit.contain,),
+                    Image(
+                        image:
+                            AssetImage('lib/assets/backgroundPokeDetail.png')),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.network(
+                          this.shouldShowDefaultImage ? pokemon.image : pokemon.shinyImage,
+                          height: 200,
+                          fit: BoxFit.contain,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        FlatButton(
+                          child: Text(shouldShowDefaultImage ? 'SHOW SHINY VERSION' : 'SHOW NORMAL VERSION'),
+                          color: Colors.purple,
+                          textColor: Colors.white,
+                          onPressed: () {
+                            this.toggleImageToShow();
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(20),
+                            side: BorderSide(color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
                 Container(color: Colors.black, height: 1),
-                StatsBoxWidget(stats: pokemon.stats,),
-                FlatButton(
-                  child: Text('GO TO EVOLUTIONS'),
-                  color: Colors.purple,
-                  textColor: Colors.white,
-                  onPressed: () {
-                    Navigator.push(context,
-                        CupertinoPageRoute(builder: (context) => ArrozPage()));
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20),
-                    side: BorderSide(color: Colors.white),
+                StatsBoxWidget(
+                    stats: pokemon.stats, color: pokemon.typeInfo.color),
+                new Flexible(
+                  flex: 1,
+                  child: Container(
+                    decoration:
+                        new BoxDecoration(color: pokemon.typeInfo.color),
+                    child: new Center(
+                      child: FlatButton(
+                        child: Text('GO TO EVOLUTIONS'),
+                        color: Colors.purple,
+                        textColor: Colors.white,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => ArrozPage()));
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(20),
+                          side: BorderSide(color: Colors.white),
+                        ),
+                      ),
+                    ),
                   ),
                 )
               ],
@@ -90,7 +139,3 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
     );
   }
 }
-
-
-
-
