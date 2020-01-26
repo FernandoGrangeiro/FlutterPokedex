@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpokedex/app/modules/evolution/evolution_bloc.dart';
 
+import 'components/evolution_list_loader.dart';
 import 'components/evolution_list_view.dart';
 
 class EvolutionPage extends StatefulWidget {
@@ -27,19 +28,26 @@ class _EvolutionPageState extends State<EvolutionPage> {
         stream: _bloc.response,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data != null) {
-              return Scaffold(
-                  appBar: AppBar(
-                    title: Text(widget.title),
-                  ),
-                  body: EvolutionListWidget(listItems: snapshot.data));
-            }
+            return Scaffold(
+                appBar: AppBar(
+                  title: Text(widget.title),
+                ),
+                body: snapshot.hasError
+                    ? EvolutionListWidget(listItems: snapshot.data)
+                    : Scaffold.of(context)
+                        .showSnackBar(SnackBarPage().snackBar));
           }
           return Scaffold(
               appBar: AppBar(
                 title: Text(widget.title),
               ),
-              body: Text("Text"));
+              body: EvolutionListLoader());
         });
   }
+}
+
+class SnackBarPage {
+  final snackBar = SnackBar(
+    content: Text('Não foi possible te achar'),
+  );
 }
