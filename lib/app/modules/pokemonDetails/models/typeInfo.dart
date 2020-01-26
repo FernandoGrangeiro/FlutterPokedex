@@ -17,4 +17,5 @@ class TypeInfo {
   }
   String name;
   Color color;
+
 }

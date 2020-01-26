@@ -17,4 +17,7 @@ class Pokemon {
   String image;
   int order;
   Stats stats;
+
+  Pokemon.fromJson(Map<String, dynamic> json, TypeInfo type, Stats stats,)
+      : id = json['id'], typeInfo = type, stats = stats, image = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ json['id'].toString() +'.png', order = json['order'], name = json['name'];
 }
