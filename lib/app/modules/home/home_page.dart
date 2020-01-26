@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterpokedex/app/modules/arroz/arroz_page.dart';
+import 'package:flutterpokedex/app/modules/pokemonList/pokemonList_page.dart';
 import 'package:flutterpokedex/app/modules/whoisthat/whoisthat_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _isPokemon = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,34 +23,37 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Image(image: AssetImage('lib/assets/logo.png')),
+          Image(image: AssetImage(_isPokemon ? 'lib/assets/logo.png' : 'lib/assets/equipe.png')),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-            FlatButton(
+              FlatButton(
+              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0),
+              side: BorderSide(style: BorderStyle.solid, color: Colors.yellow)),
+              color: Colors.yellow,
+              onPressed: () {
+                Navigator.push(context,
+                    CupertinoPageRoute(builder: (context) => PokemonListPage()));
+              },
+              child: Text(_isPokemon ? "List" : "Outsmart", style: TextStyle(color: Colors.blue)),
+            ),
+              FlatButton(
+              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0),
+              side: BorderSide(style: BorderStyle.solid, color: Colors.blue)),
               color: Colors.blue,
               onPressed: () {
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => ArrozPage()));
+                    CupertinoPageRoute(builder: (context) => WhoisthatPage()));
               },
-              child: Text("Cachorro"),
-            ),
-            FlatButton(
-              color: Colors.brown,
-              onPressed: () {
-                Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => ArrozPage()));
-              },
-              child: Text("Gato"),
-            ),
+              child: Text(_isPokemon ? "Who is that pokémon?" : "Outsmart", style: TextStyle(color: Colors.yellow))),
             ],
           ),
           IconButton(
             icon: Image(image: AssetImage('lib/assets/red-button.png')),
             iconSize: 200,
             onPressed: () {
-              Navigator.push(context,
-                  CupertinoPageRoute(builder: (context) => WhoisthatPage()));
+              setState(() {
+                 _isPokemon = !_isPokemon;});
             },
           ),
         ],
