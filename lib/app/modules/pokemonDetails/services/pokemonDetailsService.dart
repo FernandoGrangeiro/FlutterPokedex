@@ -53,8 +53,8 @@ class PokemonDetailsService {
     }
 
     Stats stats = Stats(speed, attack, defense, specialAttack, specialDefense, hp);
-
-    Pokemon pokemon = Pokemon.fromJson(jsonDecode(jsonResponseString), TypeInfo(Types.fire), stats);
+    Types type = getTypeFromString(decodedJson['types'][decodedJson['types'].length - 1]['type']['name']);
+    Pokemon pokemon = Pokemon.fromJson(jsonDecode(jsonResponseString), new TypeInfo(type), stats);
     print('pokemon: ' + pokemon.toString());
 
 //    Pokemon pokemon = Pokemon(4, Types.fire, 'Charmander', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png', 5, stats);
@@ -63,8 +63,90 @@ class PokemonDetailsService {
   }
 }
 
-//Types map(String typeName) {
-//  switch (typeName) {
-//    case ''
-//  }
-//}
+Types getTypeFromString(String typeName) {
+  switch (typeName) {
+    case 'normal': {
+      return Types.normal;
+    }
+    break;
+    case 'fighting': {
+      return Types.fighting;
+    }
+    break;
+    case 'flying': {
+      return Types.flying;
+    }
+    break;
+    case 'poison': {
+      return Types.poison;
+    }
+    break;
+    case 'ground': {
+      return Types.ground;
+    }
+    break;
+    case 'rock': {
+      return Types.rock;
+    }
+    break;
+    case 'bug': {
+      return Types.bug;
+    }
+    break;
+    case 'ghost': {
+      return Types.ghost;
+    }
+    break;
+    case 'steel': {
+      return Types.steel;
+    }
+    break;
+    case 'fire': {
+      return Types.fire;
+    }
+    break;
+    case 'water': {
+      return Types.water;
+    }
+    break;
+    case 'grass': {
+      return Types.grass;
+    }
+    break;
+    case 'electric': {
+      return Types.electric;
+    }
+    break;
+    case 'psychic': {
+      return Types.psychic;
+    }
+    break;
+    case 'ice': {
+      return Types.ice;
+    }
+    break;
+    case 'dragon': {
+      return Types.dragon;
+    }
+    break;
+    case 'dark': {
+      return Types.dark;
+    }
+    break;
+    case 'fairy': {
+      return Types.fairy;
+    }
+    break;
+    case 'unknown': {
+      return Types.unknown;
+    }
+    break;
+    case 'shadow': {
+      return Types.shadow;
+    }
+    break;
+    default: {
+      return Types.unknown;
+    }
+  }
+}
