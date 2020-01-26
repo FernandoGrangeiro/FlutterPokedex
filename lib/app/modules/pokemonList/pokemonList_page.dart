@@ -28,16 +28,8 @@ class _PokemonListPageState extends State<PokemonListPage> {
       stream: bloc.subject.stream,
       builder: (context, AsyncSnapshot<PokeList> snapshot) {
         if (snapshot.hasData) {
-//          if (snapshot.data.error != null && snapshot.data.error.length > 0){
-//            return _buildErrorWidget(snapshot.data.error);
-//          }
-//          developer.log(snapshot.data.toString());
           return page(getList(snapshot.data), widget.title);
-
         }
-//        else if (snapshot.hasError) {
-//          return _buildErrorWidget(snapshot.error);
-//        }
         else {
           return page(Text("teste"), widget.title);
         }
