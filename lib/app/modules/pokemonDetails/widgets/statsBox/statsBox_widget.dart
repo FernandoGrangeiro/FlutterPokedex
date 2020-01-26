@@ -8,6 +8,7 @@ class StatsBoxWidget extends StatelessWidget {
     this.stats,
   }) : super(key: key);
   final Stats stats;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,7 +19,14 @@ class StatsBoxWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(padding: const EdgeInsets.all(10), child: Text('STATS', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  'STATS',
+                  style: TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
             ],
           ),
         ),
@@ -42,30 +50,65 @@ class StatsBoxWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Flexible(child: StatItemWidget(name: 'Speed', value: stats.speed,), flex: 1,),
-                  new Flexible(child: StatItemWidget(name: 'HP', value: stats.hp,), flex: 1,)
+                  new Flexible(
+                    child: StatItemWidget(
+                      name: 'Speed',
+                      value: stats.speed,
+                    ),
+                    flex: 1,
+                  ),
+                  new Flexible(
+                    child: StatItemWidget(
+                      name: 'HP',
+                      value: stats.hp,
+                    ),
+                    flex: 1,
+                  )
                 ],
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Flexible(child: StatItemWidget(name: 'Attack', value: stats.attack,), flex: 1,),
-                  new Flexible(child: StatItemWidget(name: 'Special ATK', value: stats.specialAttack,), flex: 1,)
+                  new Flexible(
+                    child: StatItemWidget(
+                      name: 'Attack',
+                      value: stats.attack,
+                    ),
+                    flex: 1,
+                  ),
+                  new Flexible(
+                    child: StatItemWidget(
+                      name: 'Special ATK',
+                      value: stats.specialAttack,
+                    ),
+                    flex: 1,
+                  )
                 ],
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  new Flexible(child: StatItemWidget(name: 'Defense', value: stats.defense,), flex: 1,),
-                  new Flexible(child: StatItemWidget(name: 'Special DEF', value: stats.specialDefense,), flex: 1,)
+                  new Flexible(
+                    child: StatItemWidget(
+                      name: 'Defense',
+                      value: stats.defense,
+                    ),
+                    flex: 1,
+                  ),
+                  new Flexible(
+                    child: StatItemWidget(
+                      name: 'Special DEF',
+                      value: stats.specialDefense,
+                    ),
+                    flex: 1,
+                  )
                 ],
               ),
             ],
           ),
         )
-
       ],
     );
   }
