@@ -32,7 +32,7 @@ class PokemonCardWidget extends StatelessWidget {
     return new InkWell(
       onTap: () {
         Navigator.push(context,
-            CupertinoPageRoute(builder: (context) => PokemonDetailsPage(id: _id,)));
+            CupertinoPageRoute(builder: (context) => PokemonDetailsPage(id: _id, shouldShowOutsmarter: true,)));
       },
       child: card(),
     );

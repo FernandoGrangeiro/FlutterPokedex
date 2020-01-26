@@ -9,8 +9,9 @@ import 'package:flutterpokedex/app/modules/pokemonDetails/models/typeInfo.dart';
 class PokemonDetailsService {
   final dio = Dio();
 
-  Future<Pokemon> getPokemonDetails(String id) async {
-    Response response = await dio.get('https://pokeapi.co/api/v2/pokemon/' + id);
+  Future<Pokemon> getPokemonDetails(String id, bool shouldShowFetchOutsmarter) async {
+    String url = shouldShowFetchOutsmarter ? 'https://1qywc1qhbh.execute-api.us-east-1.amazonaws.com/dev/getPerson?id=' : 'https://pokeapi.co/api/v2/pokemon/';
+    Response response = await dio.get(url + id);
     String jsonResponseString = response.toString();
     Map<String, dynamic> decodedJson = jsonDecode(jsonResponseString);
     int attack = 0;

@@ -8,7 +8,8 @@ import 'package:flutterpokedex/app/modules/pokemonDetails/widgets/statsBox/stats
 class PokemonDetailsPage extends StatefulWidget {
   final String title;
   final int id;
-  const PokemonDetailsPage({Key key, this.title = "PokemonDetails", this.id})
+  final bool shouldShowOutsmarter;
+  const PokemonDetailsPage({Key key, this.title = "PokemonDetails", this.id, this.shouldShowOutsmarter})
       : super(key: key);
 
   @override
@@ -22,7 +23,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
   @override
   void initState() {
     super.initState();
-    _bloc.fetchPokemonDetails(widget.id.toString());
+    _bloc.fetchPokemonDetails(widget.id.toString(), widget.shouldShowOutsmarter);
   }
 
   void toggleImageToShow() {
@@ -72,7 +73,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
+                      children: !widget.shouldShowOutsmarter ? <Widget>[
                         FlatButton(
                           child: Text(shouldShowDefaultImage ? 'SHOW SHINY VERSION' : 'SHOW NORMAL VERSION'),
                           color: Colors.purple,
@@ -85,7 +86,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                             side: BorderSide(color: Colors.white),
                           ),
                         ),
-                      ],
+                      ] : [],
                     ),
                   ],
                 ),

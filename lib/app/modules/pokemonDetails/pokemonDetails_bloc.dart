@@ -9,8 +9,8 @@ class PokemonDetailsBloc extends BlocBase {
   Stream get response => _controller.stream;
   Sink get dataEnter => _controller.sink;
 
-  fetchPokemonDetails(String id) async {
-    var request = await _pokemonDetailService.getPokemonDetails(id);
+  fetchPokemonDetails(String id, bool shouldFetchOutsmarter) async {
+    var request = await _pokemonDetailService.getPokemonDetails(id, shouldFetchOutsmarter);
 
     dataEnter.add(request);
   }
