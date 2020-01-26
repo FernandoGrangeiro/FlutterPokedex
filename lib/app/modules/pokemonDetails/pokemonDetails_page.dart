@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemonStats.dart';
+import 'package:flutterpokedex/app/modules/evolution/evolution_page.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemon.dart';
-import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemonTypes.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/pokemonDetails_bloc.dart';
 import 'package:flutterpokedex/app/modules/pokemonDetails/widgets/statsBox/statsBox_widget.dart';
-import 'package:flutterpokedex/app/modules/arroz/arroz_page.dart';
-import 'package:flutter/cupertino.dart';
 
 class PokemonDetailsPage extends StatefulWidget {
   final String title;

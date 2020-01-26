@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterpokedex/app/modules/evolution/models/evolution_models.dart';
+import 'package:flutterpokedex/app/modules/pokemonDetails/pokemonDetails_page.dart';
 
 // ignore: must_be_immutable
 class EvolutionCell extends StatelessWidget {
@@ -27,7 +29,14 @@ class EvolutionCell extends StatelessWidget {
 
   Widget clickableCard() {
     return new InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            CupertinoPageRoute(
+                builder: (context) => PokemonDetailsPage(
+                      id: int.parse(listEvolution[index].id),
+                    )));
+      },
       child: card(),
     );
   }
@@ -36,16 +45,7 @@ class EvolutionCell extends StatelessWidget {
     return new Container(
       height: 100,
       child: new Row(
-        children: <Widget>[
-          new FadeInImage.assetNetwork(
-              placeholder: 'lib/assets/whoisthat.png',
-              image:
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
-                      (int.parse(id) + index).toString() +
-                      '.png',
-              fit: BoxFit.cover),
-          pokemonMainInfo()
-        ],
+        children: <Widget>[pokemonMainInfo()],
       ),
     );
   }

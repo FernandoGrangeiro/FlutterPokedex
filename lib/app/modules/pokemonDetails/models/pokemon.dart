@@ -4,7 +4,8 @@ import 'package:flutterpokedex/app/modules/pokemonDetails/models/pokemonStats.da
 
 class Pokemon {
   Pokemon(int id, Types type, String name, String image, int order, Stats stats,
-      String evolutionChain) {
+      String evolutionChain,
+      String shinyImage) {
     this.id = id;
     this.typeInfo = TypeInfo(type);
     this.name = name;
@@ -13,6 +14,8 @@ class Pokemon {
     this.stats = stats;
     this.stats = stats;
     this.evolutionChain = evolutionChain;
+    this.shinyImage =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/$id.png";
   }
 
   int id;
@@ -21,13 +24,12 @@ class Pokemon {
   String image;
   int order;
   Stats stats;
-  String evolutionChain;
+  String evolutionChain, shinyImage;
 
-  Pokemon.fromJson(
-    Map<String, dynamic> json,
-    TypeInfo type,
-    Stats stats,
-  )   : id = json['id'],
+  Pokemon.fromJson(Map<String, dynamic> json,
+      TypeInfo type,
+      Stats stats,)
+      : id = json['id'],
         typeInfo = type,
         stats = stats,
         image =
@@ -36,5 +38,10 @@ class Pokemon {
                 '.png',
         order = json['order'],
         evolutionChain = json['species']['url'],
-        name = json['name'];
+        name = json['name'],
+        shinyImage = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/' +
+            json['id'].toString() + '.png';
+
+
+
 }
