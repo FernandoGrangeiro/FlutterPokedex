@@ -6,8 +6,9 @@ import 'dart:developer' as developer;
 class PokemonCardWidget extends StatelessWidget {
   var _img;
   var _name;
+  var _id;
 
-  PokemonCardWidget(this._img,this._name);
+  PokemonCardWidget(this._img,this._name, this._id);
 
   BuildContext _context;
 
@@ -26,7 +27,7 @@ class PokemonCardWidget extends StatelessWidget {
 
   Widget clickableCard() {
     return new InkWell(
-      onTap: ()=> developer.log(_name),
+      onTap: ()=> developer.log(_id.toString()),
       child: card(),
     );
   }

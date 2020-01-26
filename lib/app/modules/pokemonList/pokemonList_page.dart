@@ -64,7 +64,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
         return PokemonCardWidget(
             'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
                 data.list[index].id.toString() + '.png',
-        data.list[index].name);
+        data.list[index].name, data.list[index].id);
       },
       itemCount: data.list.length,
       padding: new EdgeInsets.only(top: 5.0),
