@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterpokedex/app/modules/evolution/evolution_bloc.dart';
-import 'package:flutterpokedex/app/modules/evolution/evolution_module.dart';
 
 import 'components/evolution_list_view.dart';
 
@@ -18,9 +17,8 @@ class _EvolutionPageState extends State<EvolutionPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     _bloc.getEvolutionsByPokemon();
+    super.initState();
   }
 
   @override
@@ -29,19 +27,19 @@ class _EvolutionPageState extends State<EvolutionPage> {
         stream: _bloc.response,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Scaffold(
+            if (snapshot.data != null) {
+              return Scaffold(
+                  appBar: AppBar(
+                    title: Text(widget.title),
+                  ),
+                  body: EvolutionListWidget(listItems: snapshot.data));
+            }
+          }
+          return Scaffold(
               appBar: AppBar(
                 title: Text(widget.title),
               ),
-              body: EvolutionListWidget(),
-            );
-          }
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(widget.title),
-            ),
-            body: EvolutionListWidget(),
-          );
+              body: Text("Text"));
         });
   }
 }

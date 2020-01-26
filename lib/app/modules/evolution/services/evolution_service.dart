@@ -1,15 +1,21 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutterpokedex/app/modules/evolution/models/evolution_models.dart';
 
 class EvolutionService {
   final dio = Dio();
 
-  getEvolutionsByPokemon(String id) async {
-    Response evolutionResponse = await dio.get(
-        "https://pokeapi.co/api/v2/evolution-chain/1")
+  Future<EvolutionResponse> getEvolutionsByPokemon(String id) async {
+    Response evolutionResponse =
+        await dio.get("https://pokeapi.co/api/v2/evolution-chain/1");
 
-    print("TVFEAAS" + evolutionResponse.toString());
+    return _parseEvolutions(evolutionResponse.toString());
+  }
 
-    return evolutionResponse;
+  EvolutionResponse _parseEvolutions(String responseBody) {
+    final parsed = json.decode(responseBody);
+
+    return EvolutionResponse.fromJson(parsed);
   }
 }

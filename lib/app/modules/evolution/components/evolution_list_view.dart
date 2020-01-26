@@ -1,21 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutterpokedex/app/modules/Evolution/components/evolution_list_cell.dart';
+import 'package:flutterpokedex/app/modules/evolution/models/evolution_models.dart';
 
 class EvolutionListWidget extends StatelessWidget {
-  final List<String> litems = ["1", "2", "Third", "4"];
+  final EvolutionResponse listItems;
 
-  EvolutionListWidget({Key key}) : super(key: key);
+  EvolutionListWidget({Key key, this.listItems}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: EdgeInsets.all(16.0),
-        itemCount: litems.length,
+        itemCount: listItems.chain.listSpecies.length,
         itemBuilder: (context, index) {
           return EvolutionCell(
-            listEvolution: litems,
-            index: index,
-          );
+              listEvolution: listItems.chain.listSpecies,
+              index: index,
+              id: listItems.id);
         });
   }
 }
