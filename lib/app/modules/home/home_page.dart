@@ -34,9 +34,9 @@ class _HomePageState extends State<HomePage> {
               color: Colors.yellow,
               onPressed: () {
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => PokemonListPage(isSmartdex: _isPokemon,)));
+                    CupertinoPageRoute(builder: (context) => PokemonListPage(isPokemon: _isPokemon,)));
               },
-              child: Text(_isPokemon ? "List" : "Outsmart", style: TextStyle(color: Colors.blue)),
+              child: Text(_isPokemon ? "Pokédex" : "Smartdex", style: TextStyle(color: Colors.blue)),
             ),
               FlatButton(
               shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0),
@@ -46,11 +46,11 @@ class _HomePageState extends State<HomePage> {
                 Navigator.push(context,
                     CupertinoPageRoute(builder: (context) => _isPokemon ? WhoisthatPage() : WhoisthatoutsmarterPage()));
               },
-              child: Text(_isPokemon ? "Who is that pokémon?" : "Outsmart", style: TextStyle(color: Colors.yellow))),
+              child: Text(_isPokemon ? "Who is that pokémon?" : "Who is that Outsmarter?", style: TextStyle(color: Colors.yellow))),
             ],
           ),
           IconButton(
-            icon: Image(image: AssetImage('lib/assets/red-button.png')),
+            icon: Image(image: AssetImage('lib/assets/Red_button.png')),
             iconSize: 200,
             onPressed: () {
               setState(() {
