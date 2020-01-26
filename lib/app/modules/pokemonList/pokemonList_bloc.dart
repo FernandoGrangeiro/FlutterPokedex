@@ -8,8 +8,8 @@ class PokemonListBloc extends BlocBase {
   final BehaviorSubject<PokeList> _subject =
   BehaviorSubject<PokeList>();
 
-  getPokemonList() async {
-    PokeList response = await _repository.getPokemonList();
+  getPokemonList(bool isSmartdex) async {
+    PokeList response = await _repository.getPokemonList(isSmartdex);
     _subject.sink.add(response);
   }
 

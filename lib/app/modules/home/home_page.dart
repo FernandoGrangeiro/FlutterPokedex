@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.yellow,
               onPressed: () {
                 Navigator.push(context,
-                    CupertinoPageRoute(builder: (context) => PokemonListPage()));
+                    CupertinoPageRoute(builder: (context) => PokemonListPage(isSmartdex: _isPokemon,)));
               },
               child: Text(_isPokemon ? "List" : "Outsmart", style: TextStyle(color: Colors.blue)),
             ),

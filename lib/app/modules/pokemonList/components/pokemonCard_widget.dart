@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 
 import 'package:flutterpokedex/app/modules/pokemonDetails/pokemonDetails_page.dart';
 
@@ -43,7 +43,11 @@ class PokemonCardWidget extends StatelessWidget {
       height: 100,
       child: new Row(
         children: <Widget>[
-          new FadeInImage.assetNetwork(placeholder: 'lib/assets/whoisthat.png', image: _img,fit: BoxFit.cover),
+          new CachedNetworkImage(
+            imageUrl: _img,
+            placeholder: (context, url) => CircularProgressIndicator(),
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
           pokemonMainInfo()
         ],
       ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterpokedex/app/modules/pokemonList/components/pokemonCard_widget.dart';
 import 'package:flutterpokedex/app/modules/pokemonList/model/list_model.dart';
 import 'package:flutterpokedex/app/modules/pokemonList/pokemonList_bloc.dart';
-import 'dart:developer' as developer;
 
 class PokemonListPage extends StatefulWidget {
   final String title;
-  const PokemonListPage({Key key, this.title = "PokemonList"})
+  final bool isSmartdex;
+  const PokemonListPage({Key key, this.title = "PokemonList", this.isSmartdex})
       : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class _PokemonListPageState extends State<PokemonListPage> {
   @override
   void initState() {
     super.initState();
-    bloc.getPokemonList();
+    bloc.getPokemonList(widget.isSmartdex);
   }
 
   @override
@@ -28,10 +28,10 @@ class _PokemonListPageState extends State<PokemonListPage> {
       stream: bloc.subject.stream,
       builder: (context, AsyncSnapshot<PokeList> snapshot) {
         if (snapshot.hasData) {
-          return page(getList(snapshot.data), widget.title);
+          return page(getList(snapshot.data), widget.isSmartdex? 'OutsmartList': widget.title);
         }
         else {
-          return page(Text("teste"), widget.title);
+          return page(Text("carregando..."), widget.isSmartdex? 'OutsmartList': widget.title);
         }
       },
     );
@@ -54,7 +54,9 @@ class _PokemonListPageState extends State<PokemonListPage> {
       shrinkWrap: true,
       itemBuilder: (context,index) {
         return PokemonCardWidget(
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
+          widget.isSmartdex?
+            'https://appsimples-bucket.s3.amazonaws.com/outsmart-images/' :
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
                 data.list[index].id.toString() + '.png',
         data.list[index].name, data.list[index].id);
       },
