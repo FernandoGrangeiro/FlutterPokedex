@@ -41,7 +41,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         if (snapshot.hasError) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Errrrrrou'),  
+              title: Text('Errrrrrou'),
               backgroundColor: Colors.red,
             ),
           );
